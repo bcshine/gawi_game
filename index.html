@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 게임 제목 -->
+        <h1 class="game-title">가위, 바위, 보 게임</h1>
+        
+        <!-- 강아지 이미지 -->
+        <div class="dog-image-container">
+            <div class="dog-image">
+                <img src="/images/dog2.png" alt="강아지" class="dog-img">
+            </div>
+        </div>
+        
+        <!-- 게임 설명 -->
+        <div class="game-description" id="gameDescription">
+            <p><strong>강아지와의 가위, 바위, 보 게임입니다.</strong></p>
+            <p>고객님의 승리 => 음료수 한잔!!</p>
+            <p>강아지의 승리 => 꽝!</p>
+            <p>강아지는 위쪽, 고객님은 아랫쪽입니다</p>
+        </div>
+        
+        <!-- 게임 화면 -->
+        <div class="game-screen" id="gameScreen">
+            <!-- 강아지 섹션 -->
+            <div class="ai-section">
+                <h2>강아지</h2>
+                <div class="choice-display" id="aiChoice">
+                    <span class="choice-icon">❓</span>
+                </div>
+            </div>
+            
+            <!-- 고객님 섹션 -->
+            <div class="player-section">
+                <h2>고객님</h2>
+                <div class="choice-display" id="playerChoice">
+                    <span class="choice-icon">❓</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 카운트다운 화면 -->
+        <div class="countdown-overlay" id="countdownOverlay">
+            <div class="countdown-text" id="countdownText"></div>
+        </div>
+        
+        <!-- 폭죽 효과 -->
+        <div class="fireworks" id="fireworks"></div>
+        
+        <!-- 승리 축하 화면 -->
+        <div class="victory-celebration" id="victoryCelebration">
+            <div class="victory-dog-image">
+                <img src="/images/dog2.png" alt="축하하는 강아지" class="victory-dog-img">
+            </div>
+            <div class="victory-message">🎉 축하합니다! 🎉</div>
+            <div class="victory-subtitle">음료수 한잔!!</div>
+        </div>
+        
+        <!-- 강아지 승리 화면 -->
+        <div class="dog-victory-celebration" id="dogVictoryCelebration">
+            <div class="dog-victory-image">
+                <img src="/images/dog3.png" alt="승리한 강아지" class="dog-victory-img">
+            </div>
+            <div class="dog-victory-message">🐕 내가 이겼어요! 🐕</div>
+            <div class="dog-victory-subtitle">ㅋㅋㅋㅋ</div>
+        </div>
+        
+        <!-- 무승부 화면 -->
+        <div class="draw-celebration" id="drawCelebration">
+            <div class="draw-dog-image">
+                <img src="/images/dog4.png" alt="비긴 강아지" class="draw-dog-img">
+            </div>
+            <div class="draw-message">🤝 비겼어요! 🤝</div>
+            <div class="draw-subtitle">한번 더!</div>
+        </div>
+        
+        <!-- 꽃놀이 효과 -->
+        <div class="flower-petals" id="flowerPetals"></div>
+        
+        <!-- 선택 버튼들 -->
+        <div class="button-container" id="buttonContainer">
+            <button class="choice-btn" id="scissorsBtn" data-choice="scissors">
+                <span class="btn-icon">✌️</span>
+                <span class="btn-text">가위</span>
+            </button>
+            <button class="choice-btn" id="rockBtn" data-choice="rock">
+                <span class="btn-icon">✊</span>
+                <span class="btn-text">바위</span>
+            </button>
+            <button class="choice-btn" id="paperBtn" data-choice="paper">
+                <span class="btn-icon">✋</span>
+                <span class="btn-text">보</span>
+            </button>
+        </div>
+        
+        <!-- 게임 시작 버튼 -->
+        <div class="start-container" id="startContainer">
+            <button class="start-btn" id="startBtn">시작</button>
+        </div>
+        
+        <!-- 카운트다운 시작 버튼 -->
+        <div class="countdown-start-container" id="countdownStartContainer">
+            <button class="countdown-start-btn" id="countdownStartBtn">카운트다운</button>
+        </div>
+        
+        <!-- 결과 화면 -->
+        <div class="result-container" id="resultContainer">
+            <div class="result-message" id="resultMessage"></div>
+            <button class="restart-btn" id="restartBtn">다시하기</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
