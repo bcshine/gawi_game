@@ -258,23 +258,23 @@ class RockPaperScissorsGame {
         
         switch (result) {
             case 'win':
-                message = '🎉 고객님 승리! 음료수 한잔!!';
+                message = '🎉 고객님 승리! 🎉 <br>음료수 한잔!!';
                 resultClass = 'win';
                 this.triggerVictoryCelebration(); // 특별한 승리 축하 효과
                 break;
             case 'lose':
-                message = '😢 강아지 승리! 아쉬어요!';
+                message = '😢 강아지 승리! 😢<br>아쉬워요!';
                 resultClass = 'lose';
                 this.triggerDogVictoryCelebration(); // 강아지 승리 축하 효과
                 break;
             case 'draw':
-                message = '🤝 비겼습니다.';
+                message = '🤝 비겼습니다 🤝';
                 resultClass = 'draw';
                 this.triggerDrawCelebration(); // 무승부 축하 효과
                 break;
         }
         
-        this.resultMessage.textContent = message;
+        this.resultMessage.innerHTML = message;
         this.resultMessage.className = `result-message ${resultClass}`;
         this.resultContainer.style.display = 'block';
     }
@@ -283,45 +283,89 @@ class RockPaperScissorsGame {
         // 승리 축하 화면 표시
         this.victoryCelebration.style.display = 'flex';
         
-        // 🎆 슈퍼 폭죽 효과
+        // 🎆 슈퍼 폭죽 효과 강화
         this.fireworks.style.display = 'block';
+        this.fireworks.innerHTML = ''; // 기존 폭죽 제거
         
-        // 대형 폭죽들
-        for (let i = 0; i < 10; i++) {
-            const firework = document.createElement('div');
-            firework.className = 'firework super';
-            firework.style.left = Math.random() * 100 + '%';
-            firework.style.top = Math.random() * 60 + '%';
-            this.fireworks.appendChild(firework);
-        }
+        // 즉시 폭죽 생성
+        setTimeout(() => {
+            // 폭죽 모양 종류 배열
+            const fireworkShapes = [
+                'circle', 'star', 'heart', 'diamond', 'burst', 'big-star', 'explosion', 'cross'
+            ];
+            
+            const sparkleShapes = [
+                'circle', 'star', 'diamond', 'burst', 'sparkle-particle'
+            ];
+            
+            // 대형 특별 폭죽들 (1차 - 가장 화려한 폭죽들)
+            for (let i = 0; i < 6; i++) {
+                const firework = document.createElement('div');
+                const specialShapes = ['big-star', 'explosion', 'heart'];
+                const randomShape = specialShapes[Math.floor(Math.random() * specialShapes.length)];
+                firework.className = `firework ${randomShape}`;
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 40 + '%';
+                firework.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                this.fireworks.appendChild(firework);
+            }
+            
+            // 중간 크기 폭죽들 (2차)
+            for (let i = 0; i < 12; i++) {
+                const firework = document.createElement('div');
+                const mediumShapes = ['star', 'diamond', 'burst', 'cross', 'heart'];
+                const randomShape = mediumShapes[Math.floor(Math.random() * mediumShapes.length)];
+                firework.className = `firework ${randomShape}`;
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 70 + '%';
+                firework.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                this.fireworks.appendChild(firework);
+            }
+            
+            // 작은 반짝이 폭죽들 (3차)
+            for (let i = 0; i < 25; i++) {
+                const firework = document.createElement('div');
+                const randomShape = sparkleShapes[Math.floor(Math.random() * sparkleShapes.length)];
+                firework.className = `firework ${randomShape}`;
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 90 + '%';
+                firework.style.color = `hsl(${Math.random() * 360}, 100%, 80%)`;
+                firework.style.transform = `scale(0.6)`; // 작게 만들기
+                this.fireworks.appendChild(firework);
+            }
+        }, 100);
         
-        // 추가 폭죽들
-        for (let i = 0; i < 15; i++) {
-            const firework = document.createElement('div');
-            firework.className = 'firework large';
-            firework.style.left = Math.random() * 100 + '%';
-            firework.style.top = Math.random() * 80 + '%';
-            this.fireworks.appendChild(firework);
-        }
-        
-        // 🌸 꽃놀이 효과
+        // 🌸 꽃놀이 효과 강화
         this.flowerPetals.style.display = 'block';
+        this.flowerPetals.innerHTML = ''; // 기존 꽃잎 제거
         
-        // 꽃잎들 생성 (5단계로 나누어서)
-        for (let wave = 0; wave < 5; wave++) {
+        // 꽃잎들 생성 (6단계로 나누어서 더 풍성하게)
+        for (let wave = 0; wave < 6; wave++) {
             setTimeout(() => {
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 15; i++) {
                     const petal = document.createElement('div');
                     petal.className = 'petal';
                     petal.style.left = Math.random() * 100 + '%';
                     petal.style.animationDelay = Math.random() * 2 + 's';
-                    petal.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    petal.style.animationDuration = (3 + Math.random() * 3) + 's';
+                    
+                    // 다양한 색상의 꽃잎
+                    const colors = [
+                        'linear-gradient(45deg, #ff69b4, #ffc0cb)',
+                        'linear-gradient(45deg, #ffb3ba, #ff677d)',
+                        'linear-gradient(45deg, #bae1ff, #87ceeb)',
+                        'linear-gradient(45deg, #ffffba, #ffeb3b)',
+                        'linear-gradient(45deg, #baffc9, #90ee90)',
+                        'linear-gradient(45deg, #ffd1dc, #ffb6c1)'
+                    ];
+                    petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
                     this.flowerPetals.appendChild(petal);
                 }
-            }, wave * 500);
+            }, wave * 400);
         }
         
-        // 7초 후 축하 화면 숨기기
+        // 5초 후 축하 화면 숨기기
         setTimeout(() => {
             this.victoryCelebration.style.display = 'none';
             this.fireworks.style.display = 'none';

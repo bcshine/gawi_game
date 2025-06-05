@@ -173,7 +173,7 @@ body {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: 15;
+    z-index: 3000;
     display: none;
 }
 
@@ -183,21 +183,21 @@ body {
     height: 12px;
     border-radius: 50%;
     animation: fireworkAnimation 2s ease-out forwards;
-    box-shadow: 0 0 20px currentColor;
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
 }
 
 .firework.large {
     width: 20px;
     height: 20px;
     animation: fireworkAnimationLarge 2.5s ease-out forwards;
-    box-shadow: 0 0 30px currentColor;
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor;
 }
 
 .firework.sparkle {
     width: 8px;
     height: 8px;
     animation: sparkleAnimation 1.5s ease-out forwards;
-    box-shadow: 0 0 15px currentColor;
+    box-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
 }
 
 @keyframes fireworkAnimation {
@@ -536,7 +536,7 @@ body {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: 25;
+    z-index: 3100;
     display: none;
 }
 
@@ -548,35 +548,54 @@ body {
     border-radius: 50% 0;
     animation: petalFall 4s linear infinite;
     opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .petal:nth-child(odd) {
     background: linear-gradient(45deg, #ffb3ba, #ff677d);
     border-radius: 0 50%;
+    transform: rotate(45deg);
 }
 
 .petal:nth-child(3n) {
     background: linear-gradient(45deg, #bae1ff, #87ceeb);
+    border-radius: 50% 10px;
 }
 
 .petal:nth-child(4n) {
     background: linear-gradient(45deg, #ffffba, #ffeb3b);
+    border-radius: 10px 50%;
 }
 
 .petal:nth-child(5n) {
     background: linear-gradient(45deg, #baffc9, #90ee90);
+    border-radius: 50% 50% 0 50%;
+}
+
+.petal:nth-child(6n) {
+    background: linear-gradient(45deg, #ffd1dc, #ffb6c1);
+    border-radius: 50% 0 50% 0;
 }
 
 @keyframes petalFall {
     0% {
-        transform: translateY(-100px) rotate(0deg);
+        transform: translateY(-100px) rotate(0deg) scale(0.5);
         opacity: 1;
     }
+    25% {
+        transform: translateY(25vh) rotate(90deg) scale(1);
+        opacity: 0.9;
+    }
     50% {
+        transform: translateY(50vh) rotate(180deg) scale(0.8);
         opacity: 0.8;
     }
+    75% {
+        transform: translateY(75vh) rotate(270deg) scale(1.1);
+        opacity: 0.6;
+    }
     100% {
-        transform: translateY(calc(100vh + 100px)) rotate(360deg);
+        transform: translateY(calc(100vh + 100px)) rotate(360deg) scale(0.3);
         opacity: 0;
     }
 }
@@ -586,7 +605,7 @@ body {
     width: 25px;
     height: 25px;
     animation: superFireworkAnimation 3s ease-out forwards;
-    box-shadow: 0 0 40px currentColor;
+    box-shadow: 0 0 40px currentColor, 0 0 80px currentColor, 0 0 120px currentColor;
 }
 
 @keyframes superFireworkAnimation {
@@ -753,4 +772,476 @@ body {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
+}
+
+/* 텍스트 반짝임 애니메이션 */
+@keyframes textSparkle {
+    0%, 100% { 
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 20px #ffd700, 0 0 30px #ffd700;
+        transform: scale(1.05);
+    }
+}
+
+/* 기본 동그라미 폭죽 */
+.firework.circle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: fireworkAnimation 2s ease-out forwards;
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+/* 별 모양 폭죽 */
+.firework.star {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid currentColor;
+    transform: rotate(35deg);
+    animation: starFireworkAnimation 2.5s ease-out forwards;
+    box-shadow: 0 0 25px currentColor, 0 0 50px currentColor;
+}
+
+.firework.star:before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid currentColor;
+    transform: rotate(-70deg);
+}
+
+.firework.star:after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 3px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid currentColor;
+    transform: rotate(70deg);
+}
+
+/* 하트 모양 폭죽 */
+.firework.heart {
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    animation: heartFireworkAnimation 2s ease-out forwards;
+    box-shadow: 0 0 20px currentColor;
+}
+
+.firework.heart:before,
+.firework.heart:after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: currentColor;
+    border-radius: 8px 8px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.firework.heart:after {
+    left: 5px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* 다이아몬드 모양 폭죽 */
+.firework.diamond {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: currentColor;
+    transform: rotate(45deg);
+    animation: diamondFireworkAnimation 2.2s ease-out forwards;
+    box-shadow: 0 0 25px currentColor, 0 0 50px currentColor;
+}
+
+/* 불꽃 모양 폭죽 (여러 줄기) */
+.firework.burst {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(to top, transparent, currentColor, transparent);
+    animation: burstFireworkAnimation 2s ease-out forwards;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.firework.burst:before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(to top, transparent, currentColor, transparent);
+    transform: rotate(45deg);
+    left: 0;
+    top: 0;
+}
+
+.firework.burst:after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(to top, transparent, currentColor, transparent);
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+}
+
+/* 대형 별 폭죽 */
+.firework.big-star {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 18px solid currentColor;
+    transform: rotate(35deg);
+    animation: bigStarFireworkAnimation 3s ease-out forwards;
+    box-shadow: 0 0 35px currentColor, 0 0 70px currentColor, 0 0 105px currentColor;
+}
+
+.firework.big-star:before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 18px solid currentColor;
+    transform: rotate(-70deg);
+}
+
+.firework.big-star:after {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 18px solid currentColor;
+    transform: rotate(70deg);
+}
+
+/* 새로운 애니메이션들 */
+@keyframes starFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(35deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.5) rotate(125deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2) rotate(215deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: scale(1.5) rotate(305deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(0) rotate(395deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(1.5) rotate(108deg);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(2) rotate(216deg);
+        opacity: 0.8;
+    }
+    90% {
+        transform: scale(1) rotate(324deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes diamondFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(45deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(2) rotate(135deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(3) rotate(225deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: scale(2) rotate(315deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(0) rotate(405deg);
+        opacity: 0;
+    }
+}
+
+@keyframes burstFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1.5) rotate(72deg);
+        opacity: 1;
+    }
+    40% {
+        transform: scale(2.5) rotate(144deg);
+        opacity: 0.9;
+    }
+    60% {
+        transform: scale(2) rotate(216deg);
+        opacity: 0.7;
+    }
+    80% {
+        transform: scale(1) rotate(288deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bigStarFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(35deg);
+        opacity: 1;
+    }
+    15% {
+        transform: scale(2.5) rotate(89deg);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(4) rotate(143deg);
+        opacity: 0.95;
+    }
+    45% {
+        transform: scale(3.5) rotate(197deg);
+        opacity: 0.85;
+    }
+    60% {
+        transform: scale(2.5) rotate(251deg);
+        opacity: 0.7;
+    }
+    75% {
+        transform: scale(1.5) rotate(305deg);
+        opacity: 0.5;
+    }
+    90% {
+        transform: scale(0.5) rotate(359deg);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(0) rotate(395deg);
+        opacity: 0;
+    }
+}
+
+/* 폭발형 다중 폭죽 */
+.firework.explosion {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: explosionAnimation 2.5s ease-out forwards;
+    box-shadow: 
+        0 0 10px currentColor,
+        10px 0 8px currentColor,
+        -10px 0 8px currentColor,
+        0 10px 8px currentColor,
+        0 -10px 8px currentColor,
+        7px 7px 6px currentColor,
+        -7px 7px 6px currentColor,
+        7px -7px 6px currentColor,
+        -7px -7px 6px currentColor;
+}
+
+/* 반짝이는 입자 효과 */
+.firework.sparkle-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: sparkleParticleAnimation 1.8s ease-out forwards;
+    box-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+}
+
+/* 십자형 폭죽 */
+.firework.cross {
+    position: absolute;
+    width: 3px;
+    height: 18px;
+    background: currentColor;
+    animation: crossFireworkAnimation 2.3s ease-out forwards;
+    box-shadow: 0 0 20px currentColor;
+}
+
+.firework.cross:before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background: currentColor;
+    left: -7.5px;
+    top: 7.5px;
+}
+
+@keyframes explosionAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+        box-shadow: 
+            0 0 10px currentColor,
+            0 0 8px currentColor,
+            0 0 8px currentColor,
+            0 0 8px currentColor,
+            0 0 8px currentColor,
+            0 0 6px currentColor,
+            0 0 6px currentColor,
+            0 0 6px currentColor,
+            0 0 6px currentColor;
+    }
+    25% {
+        transform: scale(1.5);
+        opacity: 1;
+        box-shadow: 
+            0 0 15px currentColor,
+            15px 0 12px currentColor,
+            -15px 0 12px currentColor,
+            0 15px 12px currentColor,
+            0 -15px 12px currentColor,
+            11px 11px 9px currentColor,
+            -11px 11px 9px currentColor,
+            11px -11px 9px currentColor,
+            -11px -11px 9px currentColor;
+    }
+    50% {
+        transform: scale(2.5);
+        opacity: 0.8;
+        box-shadow: 
+            0 0 20px currentColor,
+            25px 0 18px currentColor,
+            -25px 0 18px currentColor,
+            0 25px 18px currentColor,
+            0 -25px 18px currentColor,
+            18px 18px 15px currentColor,
+            -18px 18px 15px currentColor,
+            18px -18px 15px currentColor,
+            -18px -18px 15px currentColor;
+    }
+    75% {
+        transform: scale(2);
+        opacity: 0.5;
+        box-shadow: 
+            0 0 25px currentColor,
+            30px 0 20px currentColor,
+            -30px 0 20px currentColor,
+            0 30px 20px currentColor,
+            0 -30px 20px currentColor,
+            21px 21px 18px currentColor,
+            -21px 21px 18px currentColor,
+            21px -21px 18px currentColor,
+            -21px -21px 18px currentColor;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+        box-shadow: 
+            0 0 30px currentColor,
+            35px 0 25px currentColor,
+            -35px 0 25px currentColor,
+            0 35px 25px currentColor,
+            0 -35px 25px currentColor,
+            25px 25px 22px currentColor,
+            -25px 25px 22px currentColor,
+            25px -25px 22px currentColor,
+            -25px -25px 22px currentColor;
+    }
+}
+
+@keyframes sparkleParticleAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.2) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: scale(1) rotate(270deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes crossFireworkAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(2) rotate(108deg);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(3) rotate(216deg);
+        opacity: 0.8;
+    }
+    90% {
+        transform: scale(2) rotate(324deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
 } 
