@@ -647,69 +647,129 @@ body {
 /* 반응형 - 모바일 */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 5px;
     }
     
     .game-container {
-        padding: 15px;
-        max-width: 350px;
+        padding: 10px;
+        max-width: 320px;
         margin: 0;
-        max-height: calc(100vh - 20px);
+        max-height: calc(100vh - 10px);
         overflow-y: auto;
     }
     
     .game-title {
-        font-size: 1.8rem;
-        margin-bottom: 10px;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+    
+    .dog-image-container {
+        margin: 15px 0;
     }
     
     .dog-image {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
     
     .dog-img {
-        width: 110px;
-        height: 110px;
+        width: 80px;
+        height: 80px;
     }
     
-    .victory-dog-img,
-    .dog-victory-img,
-    .draw-dog-img {
-        width: 180px;
-        height: 180px;
+    .game-description {
+        padding: 10px;
+        margin-bottom: 15px;
     }
     
-    .victory-message {
-        font-size: 2rem;
+    .game-description p {
+        font-size: 1rem;
+        margin: 4px 0;
     }
     
-    .victory-subtitle {
-        font-size: 1.4rem;
+    .ai-section, .player-section {
+        padding: 15px;
     }
     
-    .dog-victory-message,
-    .draw-message {
-        font-size: 1.8rem;
+    .ai-section h2, .player-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
     }
     
-    .dog-victory-subtitle,
-    .draw-subtitle {
-        font-size: 1.3rem;
-    }
-    
-    .choice-btn {
-        width: 70px;
-        height: 70px;
-        margin: 0 10px;
+    .choice-display {
+        height: 80px;
+        width: 80px;
     }
     
     .choice-icon {
         font-size: 3rem;
     }
     
+    .choice-btn {
+        padding: 10px 15px;
+        font-size: 1rem;
+        min-width: 80px;
+        gap: 5px;
+    }
+    
+    .btn-icon {
+        font-size: 1.5rem;
+    }
+    
+    .start-btn, .countdown-start-btn {
+        padding: 12px 30px;
+        font-size: 1.2rem;
+    }
+    
+    .restart-btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+    
+    .result-message {
+        font-size: 1.5rem;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .victory-dog-img,
+    .dog-victory-img,
+    .draw-dog-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .victory-message {
+        font-size: 1.5rem;
+    }
+    
+    .victory-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .dog-victory-message,
+    .draw-message {
+        font-size: 1.5rem;
+    }
+    
+    .dog-victory-subtitle,
+    .draw-subtitle {
+        font-size: 1.2rem;
+    }
+    
     .countdown-text {
-        font-size: 6rem;
+        font-size: 4rem;
+    }
+    
+    .button-container {
+        margin: 15px 0;
+        gap: 10px;
+    }
+    
+    .start-container,
+    .countdown-start-container,
+    .result-container {
+        margin: 15px 0;
     }
 }
 
