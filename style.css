@@ -7,11 +7,12 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow: hidden;
 }
 
 .game-container {
@@ -645,10 +646,16 @@ body {
 
 /* 반응형 - 모바일 */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
     .game-container {
-        padding: 20px;
+        padding: 15px;
         max-width: 350px;
-        margin: 20px;
+        margin: 0;
+        max-height: calc(100vh - 20px);
+        overflow-y: auto;
     }
     
     .game-title {
